@@ -37,16 +37,16 @@ def ila_makhbaza(source_root, path, compiled_root, file_py, makhbaza_root):
 def khabaze(source_root,path, compiled_root, makhbaza_root):
     for x in os.listdir(source_root + path):
         if x in EXCLUDE:
-            print x, ' is excluded'
+            print(str(x) + ' is excluded')
             continue
         if x in DONT_COMPILE:
-            print x, ' kept in python source'
+            print(str(x) + ' kept in python source')
             if os.path.isdir(path + x): shutil.copytree(source_root + path + x, compiled_root + path + x)
             elif os.path.splitext(x)[1] == '.py': shutil.copyfile(source_root + path + x ,compiled_root + path + x)
             continue
         if os.path.isdir(source_root + path + x):
             os.mkdir(compiled_root + path + x)
-            print path + x + '/'
+            print(str(path) + str(x) + '/')
             khabaze( source_root, path + x + '/', compiled_root, makhbaza_root)
         elif x == '__init__.py' :shutil.copyfile(source_root +  path + x ,compiled_root + path + x)
         elif os.path.splitext(x)[1] == '.pyc': continue
@@ -99,4 +99,4 @@ setup(
     khabaze(source_root, '', source_root + compiled_root + '/', makhbaza_root + '/')
     shutil.rmtree(source_root + makhbaza_root)
     print ('--------------- Report ---------------')
-    print report['errors']
+    print(report['errors'])
