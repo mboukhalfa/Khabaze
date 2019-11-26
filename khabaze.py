@@ -2,8 +2,8 @@ import os
 import sys
 import shutil
 import getopt
-EXCLUDE = [ 'khabaze.py', 'Auto_fill.py','clean_osm.py','apps', '__pycache__', '.git' ]
-DONT_COMPILE = [ 'anastacia', 'api', 'manage.py', 'resource_deamon.py' ]
+EXCLUDE = [  '__pycache__', '.git' ]
+DONT_COMPILE = [  ]
 errors = ''
 
 def generate_folder (path, name):
